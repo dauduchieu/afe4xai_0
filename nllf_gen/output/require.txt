@@ -1,0 +1,3 @@
+.CSV
+
+id | condition_label | bsq_1 | ...

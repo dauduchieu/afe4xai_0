@@ -1,0 +1,7 @@
+[
+    {
+        "medical_abstract": "",
+        "bsq": "",
+        "label": ""
+    }
+]
