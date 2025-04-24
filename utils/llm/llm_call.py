@@ -7,8 +7,9 @@ load_dotenv()
 GOOGLE_GENAI_API_KEY = os.getenv('GOOGLE_GENAI_API_KEY')
 
 def llm_structed_output(prompt='', api_key=GOOGLE_GENAI_API_KEY, res_type='application/json', res_schema=None):
-    if res_schema is None: 
-        return None
+    # if res_schema is None: 
+    #     return None
+    # print(res_schema)
     client = genai.Client(api_key=api_key)
     response = client.models.generate_content(
         model='gemini-2.0-flash',
@@ -18,6 +19,8 @@ def llm_structed_output(prompt='', api_key=GOOGLE_GENAI_API_KEY, res_type='appli
             'response_schema': res_schema
         }
     )
+    # print(response.text)
+    # print(response.parsed)
     return response.parsed
 
 if __name__ == '__main__':
