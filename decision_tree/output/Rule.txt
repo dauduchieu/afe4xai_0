@@ -1,0 +1,92 @@
+Rule:
+|--- BSQ4_Yes <= 0.64
+|   |--- BSQ8_Yes <= 0.60
+|   |   |--- BSQ1_Yes <= 0.74
+|   |   |   |--- nervous_related <= 0.50
+|   |   |   |   |--- BSQ3_No <= 0.48
+|   |   |   |   |   |--- class: 5
+|   |   |   |   |--- BSQ3_No >  0.48
+|   |   |   |   |   |--- class: 5
+|   |   |   |--- nervous_related >  0.50
+|   |   |   |   |--- BSQ3_No <= 0.74
+|   |   |   |   |   |--- class: 3
+|   |   |   |   |--- BSQ3_No >  0.74
+|   |   |   |   |   |--- class: 3
+|   |   |--- BSQ1_Yes >  0.74
+|   |   |   |--- digestive_related <= 0.50
+|   |   |   |   |--- BSQ1_Yes <= 0.83
+|   |   |   |   |   |--- class: 5
+|   |   |   |   |--- BSQ1_Yes >  0.83
+|   |   |   |   |   |--- class: 2
+|   |   |   |--- digestive_related >  0.50
+|   |   |   |   |--- neoplasm_related <= 0.50
+|   |   |   |   |   |--- class: 2
+|   |   |   |   |--- neoplasm_related >  0.50
+|   |   |   |   |   |--- class: 1
+|   |--- BSQ8_Yes >  0.60
+|   |   |--- nervous_related <= 0.50
+|   |   |   |--- BSQ1_Yes <= 0.60
+|   |   |   |   |--- BSQ8_Yes <= 0.87
+|   |   |   |   |   |--- class: 4
+|   |   |   |   |--- BSQ8_Yes >  0.87
+|   |   |   |   |   |--- class: 4
+|   |   |   |--- BSQ1_Yes >  0.60
+|   |   |   |   |--- BSQ4_No <= 0.92
+|   |   |   |   |   |--- class: 4
+|   |   |   |   |--- BSQ4_No >  0.92
+|   |   |   |   |   |--- class: 5
+|   |   |--- nervous_related >  0.50
+|   |   |   |--- BSQ2_Yes <= 0.63
+|   |   |   |   |--- BSQ8_No <= 0.28
+|   |   |   |   |   |--- class: 4
+|   |   |   |   |--- BSQ8_No >  0.28
+|   |   |   |   |   |--- class: 3
+|   |   |   |--- BSQ2_Yes >  0.63
+|   |   |   |   |--- BSQ8_Yes <= 0.90
+|   |   |   |   |   |--- class: 3
+|   |   |   |   |--- BSQ8_Yes >  0.90
+|   |   |   |   |   |--- class: 4
+|--- BSQ4_Yes >  0.64
+|   |--- nervous_related <= 0.50
+|   |   |--- BSQ2_No <= 0.30
+|   |   |   |--- BSQ8_Yes <= 0.89
+|   |   |   |   |--- BSQ5_No <= 0.10
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- BSQ5_No >  0.10
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- BSQ8_Yes >  0.89
+|   |   |   |   |--- class: 4
+|   |   |--- BSQ2_No >  0.30
+|   |   |   |--- BSQ3_Yes <= 0.59
+|   |   |   |   |--- BSQ1_Yes <= 0.52
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- BSQ1_Yes >  0.52
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- BSQ3_Yes >  0.59
+|   |   |   |   |--- BSQ3_Yes <= 0.88
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- BSQ3_Yes >  0.88
+|   |   |   |   |   |--- class: 4
+|   |--- nervous_related >  0.50
+|   |   |--- BSQ4_No <= 0.12
+|   |   |   |--- BSQ2_No <= 0.18
+|   |   |   |   |--- BSQ5_Yes <= 0.90
+|   |   |   |   |   |--- class: 3
+|   |   |   |   |--- BSQ5_Yes >  0.90
+|   |   |   |   |   |--- class: 3
+|   |   |   |--- BSQ2_No >  0.18
+|   |   |   |   |--- BSQ8_Yes <= 0.08
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- BSQ8_Yes >  0.08
+|   |   |   |   |   |--- class: 1
+|   |   |--- BSQ4_No >  0.12
+|   |   |   |--- BSQ6_Yes <= 0.17
+|   |   |   |   |--- BSQ4_No <= 0.16
+|   |   |   |   |   |--- class: 1
+|   |   |   |   |--- BSQ4_No >  0.16
+|   |   |   |   |   |--- class: 1
+|   |   |   |--- BSQ6_Yes >  0.17
+|   |   |   |   |--- neoplasm_related <= 0.50
+|   |   |   |   |   |--- class: 3
+|   |   |   |   |--- neoplasm_related >  0.50
+|   |   |   |   |   |--- class: 1

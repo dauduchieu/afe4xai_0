@@ -1,0 +1,57 @@
+import numpy as np
+from sklearn.tree import DecisionTreeClassifier, plot_tree, export_text
+import matplotlib.pyplot as plt
+
+class DecisionTreeModel:
+    def __init__(self, max_depth=5):
+        self.max_depth = max_depth
+        self.tree = DecisionTreeClassifier(max_depth=max_depth, random_state=42)
+        
+    def train(self, X, y):
+        self.tree.fit(X, y)
+
+    def evaluate(self, X, y, dataset_name="Dataset"):
+        acc = self.tree.score(X, y)
+        print(f"{dataset_name} Accuracy: {acc:.4f}")
+        return acc
+
+    def sort_features_by_importance(self, X, feature_names):
+        importances = self.tree.feature_importances_
+        sorted_indices = np.argsort(importances)[::-1]
+        sorted_X = X[:, sorted_indices]
+        sorted_names = [feature_names[i] for i in sorted_indices]
+        return sorted_X, sorted_names
+
+    def train_with_sorted_features(self, X, y):
+        self.tree = DecisionTreeClassifier(max_depth=self.max_depth, random_state=42)
+        self.tree.fit(X, y)
+
+    def plot(self, feature_names, class_names, filename="decision_tree_sorted.png"):
+          bsq_questions = {
+              'BSQ1 Yes': "Is the medical abstract primarily concerned with abnormal tissue growth or tumors?",
+                  'BSQ2 Yes': "Does the abstract discuss conditions affecting the stomach, intestines, liver, or pancreas?",
+                  'BSQ3 Yes': "Does the abstract focus on disorders of the brain, spinal cord, or nerves?",
+                  'BSQ4 Yes': "Does the abstract describe conditions like Alzheimer's, Parkinson's, or stroke?",
+                  'BSQ5 Yes': "Does the abstract deal with issues like ulcers, colitis, or irritable bowel syndrome?",
+                  'BSQ6 Yes': "Does the abstract describe fever as a prominent symptom?",
+                  'BSQ7 Yes': "Does the abstract discuss arrhythmias or other heart rhythm abnormalities?",
+                  'BSQ8 Yes':'Does the abstract focus on edema (swelling) as the main issue?'
+          }
+          full_feature_names = [
+              bsq_questions.get(name, name.replace('_', ' ').title()) 
+              for name in feature_names
+          ]
+          
+          plt.figure(figsize=(20, 10))
+          plot_tree(self.tree,
+                    filled=True,
+                    feature_names=full_feature_names, #thay ten nhung chua thay duoc
+                    fontsize=10,
+                    impurity=False)   
+          plt.savefig(filename, dpi=300, bbox_inches='tight')
+          plt.show()
+
+    def export_rules(self, feature_names):
+        rules = export_text(self.tree, feature_names=feature_names)
+        print(rules)
+        return rules
